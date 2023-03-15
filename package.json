@@ -1,9 +1,9 @@
 {
-  "name": "chainstack-youtrack",
-  "displayName": "Chainstack youtrack",
+  "name": "youtrack-brilliant",
+  "displayName": "Youtrack Brilliant",
   "version": "0.0.1",
-  "description": "Chainstack's youtrack plugin to make development more smooth",
-  "author": "brilliantov",
+  "description": "An extension that enhances the functionality of Youtrack and makes it a more brilliant task management tool.",
+  "author": "alex@brilliantov.me",
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
@@ -12,7 +12,9 @@
   "dependencies": {
     "plasmo": "0.66.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "@plasmohq/storage": "workspace:*",
+    "swr": "2.0.4"
   },
   "devDependencies": {
     "@types/chrome": "0.0.210",

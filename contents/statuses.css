@@ -1,0 +1,70 @@
+.ch-badge {
+  background-color: #F5F5F5FF;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0 4px;
+}
+
+.ch-open {
+  background-color: #D8F7F3;
+  color: #45818E;
+}
+
+.ch-in_progress {
+  background-color: #E6F6CF;
+  color: #4DA400;
+}
+
+.ch-blocked {
+  background-color: #FCE5F1;
+  color: #DC5766;
+}
+
+.ch-review {
+  background-color: #409600;
+  color: #fff;
+}
+
+.ch-to_verify {
+  background-color: #A6E0FC;
+  color: #444;
+}
+
+.ch-ready_to_release {
+  background-color: #7DBD36;
+  color: #fff;
+}
+
+.ch-rejected {
+  background-color: #FFC8EA;
+  color: #444;
+}
+
+.ch-default {
+  color: black;
+}
+
+/* Priority */
+
+.ch-show-stopper {
+  background-color: #E30000;
+  color: #FFF;
+}
+.ch-critical {
+  background-color: #FFC8EA;
+  color: #444;
+}
+.ch-major {
+  background-color: #FFEE9C;
+  color: #B45F06;
+}
+.ch-normal {
+  background-color: #E6F6CF;
+  color: #4DA400;
+}
+.ch-minor {
+  background-color: #E6E6E6;
+  color: #888888;
+}

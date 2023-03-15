@@ -1,14 +1,9 @@
-function IndexPopup() {
-    let saveToken = function (token) {
-        chrome.storage.local.set({youtrack_token: token}).then(() => {
-            console.log('saveToken called with token ', token);
-        });
-    }
+import { useStorage } from "@plasmohq/storage/hook"
 
-    chrome.storage.local.get(['youtrack_token']).then((result) => {
-        console.log('youtrack_token called with data ', result);
-        document.getElementById("youtrack_token").setAttribute('value', result.youtrack_token);
-    });
+function IndexPopup() {
+
+    const [youtrackToken, setYoutrackToken] = useStorage("youtrack_token", "")
+    const [baseURL, setBaseURL] = useStorage("base_url", "")
 
     return (
         <div
@@ -18,14 +13,17 @@ function IndexPopup() {
                 padding: 16
             }}>
             <h2>
-                Youtrack plugin for Chainstack {" "}
+                Youtrack plugin {" "}
                 <a href="https://chainstack.myjetbrains.com/youtrack/users/me?tab=account-security" target="_blank">
                     Get Your Token here
                 </a>{" "}
 
             </h2>
+
+            <label htmlFor="youtrack_token">Youtrack base URL</label>
+            <input onChange={(e) => setBaseURL(e.target.value)} id="base_url" value={baseURL} />
             <label htmlFor="youtrack_token">Insert your youtrack token</label>
-            <input onChange={(e) => saveToken(e.target.value)} id="youtrack_token"/>
+            <input onChange={(e) => setYoutrackToken(e.target.value)} id="youtrack_token" value={youtrackToken} />
         </div>
     )
 }
