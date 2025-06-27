@@ -9,10 +9,11 @@ export const config: PlasmoCSConfig = {
   matches: ["https://*.youtrack.cloud/*"]
 }
 
-export const getInlineAnchorList: PlasmoGetInlineAnchorList = async () =>
-  document.querySelectorAll(
-    `.yt-issue-links-list div.yt-issue .yt-issue-links-list-content__summary`
-  )
+export const getInlineAnchorList: PlasmoGetInlineAnchorList = async () => {
+  const anchorList = document.querySelectorAll(`[data-test=linked-ticket]`)
+  console.log("anchorList", anchorList)
+  return anchorList
+}
 
 export const getStyle = () => {
   const style = document.createElement("style")
@@ -21,7 +22,10 @@ export const getStyle = () => {
 }
 
 const IssuePageSubtask = ({ anchor }) => {
-  let issueId = anchor.element.querySelector(`.js-issue-id`).textContent.trim()
+  let issueId = anchor.element
+    .querySelector(`[data-test~=item-id-link]`)
+    .textContent.trim()
+  console.log("issueId", issueId)
   const [access_token] = useStorage<string>("youtrack_token")
   const [base_url] = useStorage<string>("base_url")
 
