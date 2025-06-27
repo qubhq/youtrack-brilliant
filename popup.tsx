@@ -1,8 +1,19 @@
 import { useStorage } from "@plasmohq/storage/hook"
+import { useMemo } from "react"
 
 function IndexPopup() {
   const [youtrackToken, setYoutrackToken] = useStorage("youtrack_token", "")
   const [baseURL, setBaseURL] = useStorage("base_url", "")
+
+  const tokenUrl = useMemo(() => {
+    try {
+      const url = new URL(baseURL)
+      return `https://${url.hostname}/youtrack/users/me?tab=account-security`
+    } catch (e) {
+      // ignore invalid url errors
+    }
+    return null
+  }, [baseURL])
 
   return (
     <div
@@ -13,14 +24,14 @@ function IndexPopup() {
         minHeight: "30rem",
         minWidth: "20rem"
       }}>
-      <h2>
-        Youtrack plugin{" "}
-        <a
-          href="https://chainstack.youtrack.cloud/youtrack/users/me?tab=account-security"
-          target="_blank">
-          Get Your Token here
-        </a>{" "}
-      </h2>
+      {tokenUrl != null && (
+        <h2>
+          Youtrack plugin{" "}
+          <a href={tokenUrl} target="_blank">
+            Get Your Token here
+          </a>{" "}
+        </h2>
+      )}
 
       <label htmlFor="youtrack_token">Youtrack base URL</label>
       <input
