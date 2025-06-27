@@ -1,19 +1,16 @@
-import type { PlasmoCSConfig, PlasmoGetInlineAnchorList } from "plasmo"
+import { useStorage } from "@plasmohq/storage/hook"
 import styleText from "data-text:~/contents/statuses.css"
 
 import "~/contents/statuses.css"
-import { get_issue_state_class, fields } from "~youtrack/issue"
-import { useStorage } from "~node_modules/@plasmohq/storage/dist/hook"
+import type { PlasmoCSConfig, PlasmoGetInlineAnchorList } from "plasmo"
+import { fields, get_issue_state_class } from "~youtrack/issue"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://*.youtrack.cloud/*"]
 }
 
-export const getInlineAnchorList: PlasmoGetInlineAnchorList = async () => {
-  const anchorList = document.querySelectorAll(`[data-test=linked-ticket]`)
-  console.log("anchorList", anchorList)
-  return anchorList
-}
+export const getInlineAnchorList: PlasmoGetInlineAnchorList = async () =>
+  document.querySelectorAll(`[data-test=linked-ticket]`)
 
 export const getStyle = () => {
   const style = document.createElement("style")
@@ -25,7 +22,6 @@ const IssuePageSubtask = ({ anchor }) => {
   let issueId = anchor.element
     .querySelector(`[data-test~=item-id-link]`)
     .textContent.trim()
-  console.log("issueId", issueId)
   const [access_token] = useStorage<string>("youtrack_token")
   const [base_url] = useStorage<string>("base_url")
 

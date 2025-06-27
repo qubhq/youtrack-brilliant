@@ -1,13 +1,13 @@
-import type { PlasmoCSConfig, PlasmoGetInlineAnchorList } from "plasmo"
+import { useStorage } from "@plasmohq/storage/hook"
 import styleText from "data-text:~/contents/statuses.css"
 
 import "~/contents/statuses.css"
+import type { PlasmoCSConfig, PlasmoGetInlineAnchorList } from "plasmo"
 import {
-  get_issue_state_class,
+  fields,
   get_issue_priority_class,
-  fields
+  get_issue_state_class
 } from "~youtrack/issue"
-import { useStorage } from "~node_modules/@plasmohq/storage/dist/hook"
 
 export const config: PlasmoCSConfig = {
   matches: ["https://*.youtrack.cloud/*"]
